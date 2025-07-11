@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ClientForm from './components/ClientForm'
 import ClientList from './components/ClientList'
 import './styles/global.css'
@@ -6,6 +6,19 @@ import './styles/global.css'
 function App() {
   const [tab, setTab] = useState('form')
   const [clients, setClients] = useState([])
+
+  // Carrega clientes salvos no localStorage ao iniciar o app
+  useEffect(() => {
+    const savedClients = localStorage.getItem('clients')
+    if (savedClients) {
+      setClients(JSON.parse(savedClients))
+    }
+  }, [])
+
+  // Salva automaticamente no localStorage sempre que a lista mudar
+  useEffect(() => {
+    localStorage.setItem('clients', JSON.stringify(clients))
+  }, [clients])
 
   return (
     <div className="container">

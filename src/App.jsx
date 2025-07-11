@@ -7,17 +7,19 @@ function App() {
   const [tab, setTab] = useState('form')
   const [clients, setClients] = useState([])
 
-  // Carrega clientes salvos no localStorage ao iniciar o app
+  // Carrega os clientes salvos ao iniciar o app
   useEffect(() => {
-    const savedClients = localStorage.getItem('clients')
-    if (savedClients) {
-      setClients(JSON.parse(savedClients))
+    const saved = localStorage.getItem('clients')
+    if (saved) {
+      setClients(JSON.parse(saved))
+      console.log('📦 Clientes restaurados do localStorage!')
     }
   }, [])
 
-  // Salva automaticamente no localStorage sempre que a lista mudar
+  // Salva os clientes automaticamente sempre que mudam
   useEffect(() => {
     localStorage.setItem('clients', JSON.stringify(clients))
+    console.log('💾 Clientes atualizados no localStorage!')
   }, [clients])
 
   return (

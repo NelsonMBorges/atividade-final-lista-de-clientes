@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import '../styles/form.css' // garante o estilo
+import Button from './button'
 
 function ClientForm({ setClients }) {
   const [name, setName] = useState('')
@@ -44,8 +45,8 @@ function ClientForm({ setClients }) {
 
       <label>Observação:</label>
       <textarea value={note} onChange={e => setNote(e.target.value)} />
-
-      <button type="submit">Cadastrar</button>
+      <Button label= "Cadastrar"/>
+    
     </form>
   )
 }

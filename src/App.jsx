@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import ClientForm from './components/ClientForm'
 import ClientList from './components/ClientList'
 import './styles/global.css'
+import Button from './components/button'
 
 function App() {
   const [tab, setTab] = useState('form')
@@ -37,8 +38,8 @@ function App() {
       <h1>Cadastro de Clientes</h1>
 
       <nav>
-        <button onClick={() => trocarAba('form')}>Cadastrar</button>
-        <button onClick={() => trocarAba('list')}>Ver Clientes</button>
+        <Button onClickProps={() =>trocarAba('form')} label= "Cadastrar"/>
+          <Button onClickProps={() =>trocarAba('list')} label= "Ver Clientes"/>
       </nav>
 
       {loading ? (

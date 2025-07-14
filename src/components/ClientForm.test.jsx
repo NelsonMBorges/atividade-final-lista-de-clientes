@@ -1,17 +1,21 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import ClientForm from './ClientForm'
+import React from 'react'
+import { render, screen } from '@testing-library/react'
+import { describe, test, expect } from 'vitest'
+import ClientList from './ClientList'
 
-test('exibe erro para telefone inválido', () => {
-  const setClients = vi.fn()
-  render(<ClientForm setClients={setClients} />)
+describe('ClientForm', () => {
+  test('exibe erro para telefone inválido', () => {
+    const setClients = vi.fn()
+    render(<ClientForm setClients={setClients} />)
 
-  fireEvent.change(screen.getByLabelText('Nome:'), {
-    target: { value: 'Ana' }
+    fireEvent.change(screen.getByLabelText('Nome:'), {
+      target: { value: 'Ana' }
+    })
+    fireEvent.change(screen.getByLabelText('Telefone:'), {
+      target: { value: 'abc123' }
+    })
+    fireEvent.click(screen.getByText('Cadastrar'))
+
+    expect(screen.getByText(/telefone inválido/i)).toBeInTheDocument()
   })
-  fireEvent.change(screen.getByLabelText('Telefone:'), {
-    target: { value: 'abc123' }
-  })
-  fireEvent.click(screen.getByText('Cadastrar'))
-
-  expect(screen.getByText(/Telefone inválido/i)).toBeInTheDocument()
 })

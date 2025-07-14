@@ -1,3 +1,4 @@
+import React from 'react'
 function ClientList({ clients }) {
   // Se não houver clientes, exibir mensagem
   if (clients.length === 0) {

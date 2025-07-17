@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react'
 import '../styles/form.css' // garante o estilo
 import Button from './button'

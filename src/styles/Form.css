@@ -1,1 +1,86 @@
+/* form.css */
+form {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
 
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  height: 48px;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.2);
+}
+
+form .error {
+  color: #d9534f;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Botão "Cadastrar" com altura igual aos campos */
+.btn-adicionar {
+  background-color: #28a745;
+  color: white;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  height: 48px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-adicionar:hover {
+  background-color: #218838;
+}
+
+.cliente-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.cliente-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}

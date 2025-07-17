@@ -1,46 +1,49 @@
-import { useState, useEffect } from 'react'
-import ClientForm from './components/ClientForm'
-import ClientList from './components/ClientList'
-import './styles/global.css'
-import Button from './components/button'
+import React from 'react';
+import { useState, useEffect } from 'react';
+import ClientForm from './components/ClientForm';
+import ClientList from './components/ClientList';
+import './styles/global.css';
+import Button from './components/button';
+import './styles/form.css';
 
 function App() {
-  const [tab, setTab] = useState('form')
-  const [clients, setClients] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [tab, setTab] = useState('form');
+  const [clients, setClients] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // Carrega os clientes salvos ao iniciar o app
   useEffect(() => {
-    const saved = localStorage.getItem('clients')
+    const saved = localStorage.getItem('clients');
     if (saved) {
-      setClients(JSON.parse(saved))
-      console.log('📦 Clientes restaurados do localStorage!')
+      setClients(JSON.parse(saved));
+      console.log('📦 Clientes restaurados do localStorage!');
     }
-  }, [])
+  }, []);
 
   // Salva os clientes automaticamente sempre que mudam
   useEffect(() => {
-    localStorage.setItem('clients', JSON.stringify(clients))
-    console.log('💾 Clientes atualizados no localStorage!')
-  }, [clients])
+    localStorage.setItem('clients', JSON.stringify(clients));
+    console.log('💾 Clientes atualizados no localStorage!');
+  }, [clients]);
 
   // Troca de aba com efeito de carregamento
   function trocarAba(novaAba) {
-    setLoading(true)
+    setLoading(true);
     setTimeout(() => {
-      setTab(novaAba)
-      setLoading(false)
-    }, 500) // meio segundo de "suspense"
+      setTab(novaAba);
+      setLoading(false);
+    }, 500); // meio segundo de "suspense"
   }
 
   return (
     <div className="container">
-      <h1>Cadastro de Clientes</h1>
-
-      <nav>
-        <Button onClickProps={() =>trocarAba('form')} label= "Cadastrar"/>
-          <Button onClickProps={() =>trocarAba('list')} label= "Ver Clientes"/>
-      </nav>
+      <div className="cliente-header">
+        <h1>Cadastro de Clientes</h1>
+        <div className="cliente-nav">
+          <Button onClickProps={() => trocarAba('form')} label="Registrar Clientes" />
+          <Button onClickProps={() => trocarAba('list')} label="Ver Clientes" />
+        </div>
+      </div>
 
       {loading ? (
         <p className="loading">⏳ Carregando conteúdo...</p>
@@ -51,7 +54,7 @@ function App() {
         </>
       )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

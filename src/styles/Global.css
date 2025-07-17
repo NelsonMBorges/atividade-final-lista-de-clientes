@@ -1,13 +1,18 @@
-.loading {
-  font-size: 1.2rem;
-  color: #444;
-  margin: 20px 0;
-  animation: pulse 1s infinite;
-  text-align: center;
+/* global.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@keyframes pulse {
-  0%   { opacity: 0.3; }
-  50%  { opacity: 1; }
-  100% { opacity: 0.3; }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+button {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
